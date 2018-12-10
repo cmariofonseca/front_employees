@@ -1,0 +1,25 @@
+.management {
+  width: 100%;
+  display: flex;
+  padding: 2%;
+}
+
+.management .form {
+  width: 50%;
+  border: 1px solid blue;
+  margin: 2%;
+  padding: 2%;
+  border-radius: 5px;
+}
+
+.management .form .btn {
+  margin: 1%;
+}
+
+.management .list {
+  width: 50%;
+  border: 1px solid green;
+  margin: 2%;
+  padding: 2%;
+  border-radius: 5px;
+}
