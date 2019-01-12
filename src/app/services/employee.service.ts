@@ -21,23 +21,23 @@ export class EmployeeService {
       office: '',
       salary: 0
     };
-    this.urlApi = 'http://localhost:3000/api/employees';
+    this.urlApi = 'http://localhost:3000/employees';
   }
 
   postEmployee(employee: Employee) {
     return this.http.post(this.urlApi, employee);
   }
 
-  getEmployees() {
-    return this.http.get(this.urlApi);
-  }
-
   putEmployee(employee: Employee) {
-    return this.http.put(`${this.urlApi}/${employee.id}`, employee);
+    return this.http.put(`${this.urlApi}/${employee._id}`, employee);
   }
 
   deleteEmployee(_id: string) {
     return this.http.delete(`${this.urlApi}/${_id}`);
+  }
+
+  getEmployees() {
+    return this.http.get(this.urlApi);
   }
 
 }
