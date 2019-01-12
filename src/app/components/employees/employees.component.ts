@@ -40,31 +40,18 @@ export class EmployeesComponent implements OnInit {
     };
   }
 
-  getEmployees() {
-    this.empSvc.getEmployees().subscribe(res => {
-      this.employeeList = res as Employee[];
-      console.log(res);
-    });
-  }
-
   createEmployee(): void {
     this.empSvc.postEmployee(this.newEmployee).subscribe(res => {
       if (res) {
+        console.log(res);
+        this.resetForm();
         this.getEmployees();
       }
-      console.log(res);
     });
   }
 
   editEmployee() {
-    const editEmployee = {
-      id: this.newEmployee._id,
-      name: this.newEmployee.name,
-      position: this.newEmployee.position,
-      office: this.newEmployee.office,
-      salary: this.newEmployee.salary
-    };
-    this.empSvc.putEmployee(editEmployee).subscribe(res => {
+    this.empSvc.putEmployee(this.newEmployee).subscribe(res => {
       if (res) {
         console.log(res);
         this.resetForm();
@@ -79,6 +66,15 @@ export class EmployeesComponent implements OnInit {
         console.log(res);
         this.resetForm();
         this.getEmployees();
+      }
+    });
+  }
+
+  getEmployees() {
+    this.empSvc.getEmployees().subscribe(res => {
+      if (res) {
+        console.log(res);
+        this.employeeList = res as Employee[];
       }
     });
   }
